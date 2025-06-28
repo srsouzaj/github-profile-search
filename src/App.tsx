@@ -1,13 +1,15 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
+import Login from "./pages/Login";
 
 import Providers from "./Providers";
+import Home from "./pages/Home";
 
 export default function AppRoutes() {
   return (
     <Providers>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Login />} />
+        <Route path="/home" element={<Home />} />
         {/* <Route path="/user/:username" element={<UserDetails />} /> */}
         {/* <Route path="/user/:username/repo/:repoName" element={<RepoDetails />} /> */}
       </Routes>
