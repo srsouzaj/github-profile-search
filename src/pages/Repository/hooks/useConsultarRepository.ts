@@ -12,17 +12,21 @@ const useConsultarRepository = ({
   username,
 }: IUseConsultarRepository) => {
   const { repos } = Services();
-  const { data, isLoading: isLoadingRepository } = useQuery<
-    OutRepos,
-    Error,
-    OutRepos
-  >({
+  const {
+    data,
+    isLoading: isLoadingRepository,
+    isError: isErrorRepository,
+  } = useQuery<OutRepos, Error, OutRepos>({
     queryKey: ["repo", repoName, repoName],
     queryFn: () => repos.consultarRepositorioPorNome(username!, repoName!),
     enabled: !!repoName && !!username,
   });
 
-  return { repo: data || ({} as OutRepos), isLoadingRepository };
+  return {
+    repo: data || ({} as OutRepos),
+    isLoadingRepository,
+    isErrorRepository,
+  };
 };
 
 export default useConsultarRepository;

@@ -8,10 +8,10 @@ const DetailRepository = ({ repo }: { repo: OutRepos }) => {
     <div className="flex flex-col gap-2">
       <p className="flex gap-2 text-md">
         <Star className="fill-yellow-500 text-yellow-500" />{" "}
-        {repo.stargazers_count || 0} estrelas
+        {repo.stargazers_count || 0} estrela(s)
       </p>
       <p className="flex gap-2 text-md">
-        <GitFork className="w-4 h-4" /> <b>Forks:</b> {repo.forks_count || 0}
+        <GitFork className="w-4 h-4" /> <b>Fork(s):</b> {repo.forks_count || 0}
       </p>
       <p className="flex gap-2 text-md">
         <Eye className="w-4 h-4" /> {repo.stargazers_count || 0} watch(es)

@@ -7,12 +7,17 @@ import { Separator } from "@/components/ui/separator";
 import TitleRepository from "./components/titleRepository";
 import DetailRepository from "./components/DetailRepository";
 import ActionRepository from "./components/ActionRepository";
+import { memo } from "react";
+import Loading from "@/components/Loading";
 
-export default function Repository() {
+const Repository = () => {
   const { repoName, owner: username } = useParams();
-  const { repo } = useConsultarRepository({ username, repoName });
+  const { repo, isLoadingRepository, isErrorRepository } =
+    useConsultarRepository({
+      username,
+      repoName,
+    });
 
-  console.log("renderizou");
   return (
     <main className="w-screen text-black h-screen flex py-8 items-center bg-black justify-center">
       <section
@@ -24,13 +29,33 @@ export default function Repository() {
             <ArrowLeft /> Voltar
           </Button>
         </Link>
-
-        <TitleRepository repo={repo} />
-        <Separator />
-        <DetailRepository repo={repo} />
-        <Separator />
-        <ActionRepository repo={repo} />
+        {isErrorRepository ? (
+          <div className="h-full flex flex-col text-2xl font-thin items-center gap-2 justify-center">
+            <img
+              src="https://i.ibb.co/xqNV3JkK/github.png"
+              alt="Logo do GitHub Explorer"
+              className="block w-40 h-40"
+            />
+            <p>Não é comum, mas estamos com problemas.</p>
+            <p>Tente novamente mais tarde.</p>
+          </div>
+        ) : !isLoadingRepository ? (
+          <>
+            <TitleRepository repo={repo} />
+            <Separator />
+            <DetailRepository repo={repo} />
+            <Separator />
+            <ActionRepository repo={repo} />
+          </>
+        ) : (
+          <div className="h-full flex flex-col text-2xl font-thin items-center gap-3 justify-center">
+            <Loading />
+            Carregando
+          </div>
+        )}
       </section>
     </main>
   );
-}
+};
+
+export default memo(Repository);

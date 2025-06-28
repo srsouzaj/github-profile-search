@@ -3,12 +3,13 @@ import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 
 import { useUsersContext } from "@/context/users.context";
 import Loading from "@/components/Loading";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Pagination from "./components/Pagination";
 import { TableHeader } from "./components/TableHeader";
 
 const DataTable = () => {
   const { isLoadingRepositories, sortedRepos } = useUsersContext();
+  const navigate = useNavigate();
 
   return (
     <div className="w-full space-y-4">
@@ -28,12 +29,14 @@ const DataTable = () => {
               </TableRow>
             ) : sortedRepos.length > 0 ? (
               sortedRepos.map((repo) => (
-                <TableRow key={repo.id}>
-                  <TableCell>
-                    <Link to={`/repository/${repo.owner.login}/${repo.name}`}>
-                      {repo.name}
-                    </Link>
-                  </TableCell>
+                <TableRow
+                  onClick={() =>
+                    navigate(`/repository/${repo.owner.login}/${repo.name}`)
+                  }
+                  key={repo.id}
+                  className="cursor-pointer hover:bg-gray-200"
+                >
+                  <TableCell>{repo.name}</TableCell>
                   <TableCell className="text-center">
                     {repo.stargazers_count}
                   </TableCell>

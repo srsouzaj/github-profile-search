@@ -4,23 +4,35 @@ import {
   TableHead,
 } from "@/components/ui/table";
 import { useUsersContext } from "@/context/users.context";
-import { ArrowUpDown } from "lucide-react";
+import { ArrowDown, ArrowUp, ArrowUpDown } from "lucide-react";
 
 export function TableHeader() {
-  const { handleSort, sort } = useUsersContext();
+  const { handleSort, sort, order } = useUsersContext();
   return (
     <Header>
-      <TableRow className="bg-gray-300">
+      <TableRow className="bg-gray-300 hover:bg-gray-300">
         <TableHead
           onClick={() => handleSort("full_name")}
           className="cursor-pointer select-none rounded-tl-md"
         >
           Nome{" "}
-          <ArrowUpDown
-            className={`inline w-4 h-4 ${
-              sort === "full_name" ? "text-red-500" : "text-black"
-            }`}
-          />
+          {sort === "full_name" ? (
+            order === "asc" ? (
+              <ArrowDown
+                className="inline w-4 h-4
+                   text-black
+                    "
+              />
+            ) : (
+              <ArrowUp className="inline w-4 h-4 text-black" />
+            )
+          ) : (
+            <ArrowUpDown
+              className="inline w-4 h-4
+             text-black
+              "
+            />
+          )}
         </TableHead>
 
         <TableHead
@@ -28,11 +40,23 @@ export function TableHeader() {
           className="cursor-pointer w-20 text-center select-none"
         >
           Estrelas{" "}
-          <ArrowUpDown
-            className={`inline w-4 h-4 ${
-              sort === "stars" ? "text-red-500" : "text-black"
-            }`}
-          />
+          {sort === "stars" ? (
+            order === "asc" ? (
+              <ArrowDown
+                className="inline w-4 h-4
+                   text-black
+                    "
+              />
+            ) : (
+              <ArrowUp className="inline w-4 h-4 text-black" />
+            )
+          ) : (
+            <ArrowUpDown
+              className="inline w-4 h-4
+             text-black
+              "
+            />
+          )}
         </TableHead>
 
         <TableHead
@@ -40,11 +64,23 @@ export function TableHeader() {
           className="cursor-pointer text-right w-28 select-none rounded-tr-md"
         >
           Atualizado{" "}
-          <ArrowUpDown
-            className={`inline w-4 h-4 ${
-              sort === "updated" ? "text-red-500" : "text-black"
-            }`}
-          />
+          {sort === "updated" ? (
+            order === "asc" ? (
+              <ArrowDown
+                className="inline w-4 h-4
+                 text-black
+                  "
+              />
+            ) : (
+              <ArrowUp className="inline w-4 h-4 text-black" />
+            )
+          ) : (
+            <ArrowUpDown
+              className="inline w-4 h-4
+             text-black
+              "
+            />
+          )}
         </TableHead>
       </TableRow>
     </Header>

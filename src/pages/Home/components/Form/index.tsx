@@ -17,6 +17,7 @@ const FormLogin = () => {
     handleSubmit,
     formState: { isValid, errors },
   } = useForm<LoginFormTypes>({
+    defaultValues: { username: "" },
     resolver: zodResolver(loginFormSchema),
   });
 
