@@ -13,30 +13,25 @@ const UserDetail = () => {
         className="w-30 h-30 rounded-full"
         alt=""
       />
-
-      {user.login ? (
-        <div>
-          <h1 className=" text-3xl font-semibold">{user.name}</h1>
+      <div>
+        <h1 className=" text-3xl font-semibold">{user.name}</h1>
+        <p>
+          <b>@{user.login}</b> - {user.bio || "Não informado"}
+        </p>
+        <span className="flex gap-2">
           <p>
-            <b>@{user.login}</b> - {user.bio || "Não informado"}
-          </p>
-          <span className="flex gap-2">
-            <p>
-              <b>Seguidores:</b> {user.followers || "Não informado"}
-            </p>{" "}
-            |{" "}
-            <p>
-              <b>Seguindo:</b> {user.following || "Não informado"}
-            </p>
-          </span>
-          <p></p>
+            <b>Seguidores:</b> {user.followers || "Não informado"}
+          </p>{" "}
+          |{" "}
           <p>
-            <b>E-mail:</b> {user.email || "Não informado"}
+            <b>Seguindo:</b> {user.following || "Não informado"}
           </p>
-        </div>
-      ) : (
-        <h1 className="font-thin">Para continuar, pesquise por um usuário</h1>
-      )}
+        </span>
+        <p></p>
+        <p>
+          <b>E-mail:</b> {user.email || "Não informado"}
+        </p>
+      </div>
     </aside>
   );
 };

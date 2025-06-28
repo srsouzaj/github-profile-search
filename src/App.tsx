@@ -1,5 +1,4 @@
 import { Routes, Route } from "react-router-dom";
-import Login from "./pages/Login";
 
 import Providers from "./Providers";
 import Home from "./pages/Home";
@@ -9,8 +8,7 @@ export default function AppRoutes() {
   return (
     <Providers>
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/repository/:owner/:repoName" element={<Repository />} />
       </Routes>
     </Providers>

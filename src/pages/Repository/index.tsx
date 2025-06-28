@@ -19,7 +19,7 @@ export default function Repository() {
         aria-label="Container"
         className="shadow-md shadow-gray-400 container flex flex-col justify-between bg-gray-100 rounded-2xl p-5"
       >
-        <Link className="w-full" to={"/home"}>
+        <Link className="w-full" to={"/"}>
           <Button className="cursor-pointer">
             <ArrowLeft /> Voltar
           </Button>

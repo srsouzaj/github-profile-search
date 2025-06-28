@@ -7,7 +7,7 @@ export const useGithubUser = () => {
   const { handleLoggerUser } = useUsersContext();
   const { users } = Services();
 
-  const { mutate, isPending } = useMutation({
+  const { mutate, isPending, isError } = useMutation({
     mutationFn: async (userId: string) => users.consultarUsuarioById(userId),
     onSuccess: (data) => {
       handleLoggerUser(data);
@@ -17,5 +17,9 @@ export const useGithubUser = () => {
     },
   });
 
-  return { consultarUsuario: mutate, isLoadingUsuario: isPending };
+  return {
+    consultarUsuario: mutate,
+    isLoadingUsuario: isPending,
+    isErrorusuario: isError,
+  };
 };

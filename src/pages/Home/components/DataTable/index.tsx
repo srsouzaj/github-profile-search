@@ -1,106 +1,23 @@
-import { memo, useState, useMemo } from "react";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import { Button } from "@/components/ui/button";
-import { ArrowUpDown } from "lucide-react";
+import { memo } from "react";
+import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 
-import { useConsultarRepositorio } from "../../hooks/useConsultarRepos";
 import { useUsersContext } from "@/context/users.context";
 import Loading from "@/components/Loading";
 import { Link } from "react-router-dom";
-
-const perPage = 10;
+import Pagination from "./components/Pagination";
+import { TableHeader } from "./components/TableHeader";
 
 const DataTable = () => {
-  const [sort, setSort] = useState<"stars" | "updated" | "full_name">("stars");
-  const [order, setOrder] = useState<"asc" | "desc">("desc");
-  const [page, setPage] = useState(1);
-  const { user } = useUsersContext();
-
-  const { data: repos = [], isLoading } = useConsultarRepositorio(
-    user.login,
-    sort,
-    order,
-    page,
-    perPage
-  );
-
-  const sortedRepos = useMemo(() => {
-    if (sort === "stars") {
-      return [...repos].sort((a, b) => {
-        return order === "asc"
-          ? a.stargazers_count - b.stargazers_count
-          : b.stargazers_count - a.stargazers_count;
-      });
-    }
-    return repos;
-  }, [repos, sort, order]);
-
-  const handleSort = (column: typeof sort) => {
-    if (sort === column) {
-      setOrder((prev) => (prev === "asc" ? "desc" : "asc"));
-    } else {
-      setSort(column);
-      setOrder("desc");
-      setPage(1);
-    }
-  };
-
-  const hasNextPage = repos.length === perPage;
-  const hasPrevPage = page > 1;
+  const { isLoadingRepositories, sortedRepos } = useUsersContext();
 
   return (
     <div className="w-full space-y-4">
       <div className="border border-gray-500 rounded-md">
         <Table>
-          <TableHeader>
-            <TableRow className="bg-gray-300">
-              <TableHead
-                onClick={() => handleSort("full_name")}
-                className="cursor-pointer select-none rounded-tl-md"
-              >
-                Nome{" "}
-                <ArrowUpDown
-                  className={`inline w-4 h-4 ${
-                    sort === "full_name" ? "text-red-500" : "text-black"
-                  }`}
-                />
-              </TableHead>
-
-              <TableHead
-                onClick={() => handleSort("stars")}
-                className="cursor-pointer w-20 text-center select-none"
-              >
-                Estrelas{" "}
-                <ArrowUpDown
-                  className={`inline w-4 h-4 ${
-                    sort === "stars" ? "text-red-500" : "text-black"
-                  }`}
-                />
-              </TableHead>
-
-              <TableHead
-                onClick={() => handleSort("updated")}
-                className="cursor-pointer text-right w-28 select-none rounded-tr-md"
-              >
-                Atualizado{" "}
-                <ArrowUpDown
-                  className={`inline w-4 h-4 ${
-                    sort === "updated" ? "text-red-500" : "text-black"
-                  }`}
-                />
-              </TableHead>
-            </TableRow>
-          </TableHeader>
+          <TableHeader />
 
           <TableBody>
-            {isLoading ? (
+            {isLoadingRepositories ? (
               <TableRow>
                 <TableCell
                   colSpan={3}
@@ -138,17 +55,7 @@ const DataTable = () => {
           </TableBody>
         </Table>
       </div>
-
-      {/* BOTÕES DE PAGINAÇÃO */}
-      <div className="flex gap-5 justify-end">
-        <Button onClick={() => setPage((p) => p - 1)} disabled={!hasPrevPage}>
-          ← Anterior
-        </Button>
-
-        <Button onClick={() => setPage((p) => p + 1)} disabled={!hasNextPage}>
-          Próximo →
-        </Button>
-      </div>
+      <Pagination />
     </div>
   );
 };

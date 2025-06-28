@@ -3,16 +3,15 @@ import { Input } from "@/components/ui/input";
 import { AtSign, Search } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import loginFormSchema from "@/pages/Login/types/schema/login.schema";
-import type { LoginFormTypes } from "@/pages/Login/types/interface/login.schema";
-import { useGithubUser } from "../../pages/Login/hooks/useConsultarUsuario";
+import { useGithubUser } from "../../hooks/useConsultarUsuario";
 import { useCallback } from "react";
-import { useNavigate } from "react-router-dom";
-import ErrorMessage from "../ErrorMessage";
+import ErrorMessage from "../../../../components/ErrorMessage";
+import loginFormSchema from "./types/schema/login.schema";
+import type { LoginFormTypes } from "./types/interface/login.schema";
 
 const FormLogin = () => {
   const { consultarUsuario, isLoadingUsuario } = useGithubUser();
-  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -23,13 +22,9 @@ const FormLogin = () => {
 
   const onSubmit = useCallback(
     ({ username }: LoginFormTypes) => {
-      try {
-        consultarUsuario(username);
-      } finally {
-        navigate("/home");
-      }
+      consultarUsuario(username);
     },
-    [consultarUsuario, navigate]
+    [consultarUsuario]
   );
 
   return (

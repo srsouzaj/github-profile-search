@@ -1,7 +1,7 @@
-import type { OutRepos } from "./Models";
+import type { InRepo, OutRepos } from "./Models";
 
 export interface IReposApiService {
-  consultarRepositorios(usernameId: string): Promise<OutRepos>;
+  consultarRepositorios(repo: InRepo): Promise<OutRepos[]>;
   consultarRepositorioPorNome(
     usernameId: string,
     repoName: string
