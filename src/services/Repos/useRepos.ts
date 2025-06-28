@@ -6,7 +6,29 @@ import type { IReposApiService } from "./Types";
 import type { OutRepos } from "./Models";
 
 export class useRepos implements IReposApiService {
-  async consultarRepositorio(usernameId: string): Promise<OutRepos> {
+  async consultarRepositorioPorNome(
+    usernameId: string,
+    repoName: string
+  ): Promise<OutRepos> {
+    try {
+      const { data } = await api.get<OutRepos>(
+        apiRoutes.users.repos.byName.url(usernameId, repoName)
+      );
+      return data || ({} as OutRepos);
+    } catch (e) {
+      if (e instanceof AxiosError) {
+        const msg =
+          e.response?.status && APIErrorMessage[e.response.status]
+            ? APIErrorMessage[e.response.status]
+            : e.message;
+
+        return Promise.reject(new Error(msg));
+      }
+
+      return Promise.reject(e);
+    }
+  }
+  async consultarRepositorios(usernameId: string): Promise<OutRepos> {
     try {
       const { data } = await api.get(apiRoutes.users.repos.url(usernameId));
       return data;
