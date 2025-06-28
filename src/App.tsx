@@ -3,6 +3,7 @@ import Login from "./pages/Login";
 
 import Providers from "./Providers";
 import Home from "./pages/Home";
+import Repository from "./pages/Repository";
 
 export default function AppRoutes() {
   return (
@@ -10,8 +11,7 @@ export default function AppRoutes() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/home" element={<Home />} />
-        {/* <Route path="/user/:username" element={<UserDetails />} /> */}
-        {/* <Route path="/user/:username/repo/:repoName" element={<RepoDetails />} /> */}
+        <Route path="/repository/:id" element={<Repository />} />
       </Routes>
     </Providers>
   );

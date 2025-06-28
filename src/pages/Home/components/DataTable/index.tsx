@@ -12,6 +12,8 @@ import { ArrowUpDown } from "lucide-react";
 
 import { useConsultarRepositorio } from "../../hooks/useConsultarRepos";
 import { useUsersContext } from "@/context/users.context";
+import Loading from "@/components/Loading";
+import { Link } from "react-router-dom";
 
 const perPage = 10;
 
@@ -21,7 +23,7 @@ const DataTable = () => {
   const [page, setPage] = useState(1);
   const { user } = useUsersContext();
 
-  const { data: repos = [] } = useConsultarRepositorio(
+  const { data: repos = [], isLoading } = useConsultarRepositorio(
     user.login,
     sort,
     order,
@@ -98,10 +100,21 @@ const DataTable = () => {
           </TableHeader>
 
           <TableBody>
-            {sortedRepos.length > 0 ? (
+            {isLoading ? (
+              <TableRow>
+                <TableCell
+                  colSpan={3}
+                  className="text-center text-muted-foreground"
+                >
+                  <Loading /> Carregando
+                </TableCell>
+              </TableRow>
+            ) : sortedRepos.length > 0 ? (
               sortedRepos.map((repo) => (
                 <TableRow key={repo.id}>
-                  <TableCell>{repo.name}</TableCell>
+                  <TableCell>
+                    <Link to={`/repository/${repo.id}`}>{repo.name}</Link>{" "}
+                  </TableCell>
                   <TableCell className="text-center">
                     {repo.stargazers_count}
                   </TableCell>
