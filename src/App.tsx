@@ -11,7 +11,7 @@ export default function AppRoutes() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/repository/:id" element={<Repository />} />
+        <Route path="/repository/:owner/:repoName" element={<Repository />} />
       </Routes>
     </Providers>
   );

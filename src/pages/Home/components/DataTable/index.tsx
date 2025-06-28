@@ -113,7 +113,9 @@ const DataTable = () => {
               sortedRepos.map((repo) => (
                 <TableRow key={repo.id}>
                   <TableCell>
-                    <Link to={`/repository/${repo.id}`}>{repo.name}</Link>{" "}
+                    <Link to={`/repository/${repo.owner.login}/${repo.name}`}>
+                      {repo.name}
+                    </Link>
                   </TableCell>
                   <TableCell className="text-center">
                     {repo.stargazers_count}
