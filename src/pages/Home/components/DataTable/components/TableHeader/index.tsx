@@ -37,7 +37,7 @@ export function TableHeader() {
 
         <TableHead
           onClick={() => handleSort("stars")}
-          className="cursor-pointer w-20 text-center select-none"
+          className="cursor-pointer lg:w-20 not-lg:w-1 text-center select-none"
         >
           Estrelas{" "}
           {sort === "stars" ? (
@@ -61,7 +61,7 @@ export function TableHeader() {
 
         <TableHead
           onClick={() => handleSort("updated")}
-          className="cursor-pointer text-right w-28 select-none rounded-tr-md"
+          className="cursor-pointer text-right lg:w-28  select-none rounded-tr-md"
         >
           Atualizado{" "}
           {sort === "updated" ? (

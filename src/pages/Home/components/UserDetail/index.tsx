@@ -6,36 +6,40 @@ const UserDetail = () => {
   const { user } = useUsersContext();
 
   return (
-    <aside className="flex gap-5 items-center">
-      <img src={user.avatar_url} className="w-30 h-30 rounded-full" alt="" />
+    <aside className="flex  gap-5 not-lg:gap-2 items-center">
+      <img
+        src={user.avatar_url}
+        className="w-30 h-30 not-lg:w-10 not-lg:h-10 rounded-full"
+        alt=""
+      />
       <div>
-        <h1 className=" text-3xl font-semibold">{user.name}</h1>
+        <h1 className=" text-3xl not-lg:text-xl font-semibold">{user.name}</h1>
 
-        <span className="flex gap-1">
+        <div className="text-sm not-lg:text-xs text-gray-700">
           <Link
             to={user.html_url}
             target="_blank"
-            className="flex items-end gap-0.5 text-gray-500 font-bold"
+            className="text-gray-500 font-bold"
           >
             @{user.login}
-          </Link>
-          -
-          <p>
-            <b>Bio:</b> {user.bio || "Não informado"}
-          </p>
-        </span>
-        <span className="flex gap-2">
-          <p>
+          </Link>{" "}
+          -{" "}
+          <span>
+            <b>E-mail:</b> {user.email || "Não informado"}
+          </span>
+        </div>
+
+        <span className="flex gap-2 text-sm not-lg:text-xs">
+          <p className="text-sm not-lg:text-xs">
             <b>Seguidores:</b> {user.followers || "Não informado"}
           </p>
           |
-          <p>
+          <p className="text-sm not-lg:text-xs">
             <b>Seguindo:</b> {user.following || "Não informado"}
           </p>
         </span>
-        <p></p>
-        <p>
-          <b>E-mail:</b> {user.email || "Não informado"}
+        <p className="text-sm not-lg:text-xs">
+          <b>Bio:</b> {user.bio || "Não informado"}
         </p>
       </div>
     </aside>

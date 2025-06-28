@@ -7,7 +7,7 @@ const Pagination = () => {
   const { user, page, totalPages, hasNextPage, hasPrevPage, changePage } =
     useUsersContext();
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex items-center not-lg:flex-col-reverse not-lg:gap-2 justify-between">
       <span>
         <p className="font-thin text-xs">
           Total de repositórios: {user.public_repos}

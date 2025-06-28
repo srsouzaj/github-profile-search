@@ -9,6 +9,7 @@ import {
   type ReactNode,
 } from "react";
 import { useConsultarRepositorio } from "@/pages/Home/hooks/useConsultarRepos";
+import { useResponsiveStatus } from "@/hooks/useResponsiveStatus";
 
 interface UserContextData {
   user: OutUsers;
@@ -32,8 +33,9 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<OutUsers>({} as OutUsers);
   const [sort, setSort] = useState<"stars" | "updated" | "full_name">("stars");
   const [order, setOrder] = useState<"asc" | "desc">("desc");
+  const { isMicroSmart } = useResponsiveStatus();
   const [page, setPage] = useState(1);
-  const per_page = 10;
+  const per_page = isMicroSmart ? 4 : 10;
 
   const handleLoggerUser = useCallback((value: OutUsers) => {
     setUser(value);

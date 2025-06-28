@@ -9,7 +9,9 @@ export default function Home() {
     <main className="w-screen text-black h-screen flex py-8 items-center bg-black justify-center">
       <section
         aria-label="Container"
-        className="shadow-md shadow-gray-400 container flex flex-col gap-5 bg-gray-100 rounded-2xl p-5"
+        className={`shadow-md shadow-gray-400 container flex flex-col gap-5 not-lg:gap-1 bg-gray-100 rounded-2xl ${
+          user.login && "justify-between"
+        } p-5`}
       >
         <FormLogin />
         {user.login ? (
@@ -21,7 +23,7 @@ export default function Home() {
         )}
 
         {user?.login && (
-          <div className="overflow-auto">
+          <div className="overflow-auto lg:h-116 not-lg:h-120 ">
             <DataTable />
           </div>
         )}

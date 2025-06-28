@@ -12,8 +12,8 @@ const DataTable = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="w-full space-y-4">
-      <div className="border border-gray-500 rounded-md">
+    <div className="w-full flex flex-col justify-between h-full space-y-4">
+      <div className="border border-gray-200 rounded-md">
         <Table>
           <TableHeader />
 
@@ -22,7 +22,7 @@ const DataTable = () => {
               <TableRow>
                 <TableCell
                   colSpan={3}
-                  className="text-center text-muted-foreground"
+                  className="text-center lg:py-45 not-lg:py-12 text-muted-foreground"
                 >
                   <Loading /> Carregando
                 </TableCell>
