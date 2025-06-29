@@ -1,69 +1,78 @@
-# React + TypeScript + Vite
+<p align="center">
+  <img alt="logo" width="40" height="40" src="https://i.ibb.co/xqNV3JkK/github.png" />
+</p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 🔍 GitHub Profile Search
 
-Currently, two official plugins are available:
+Uma aplicação web que permite buscar e visualizar perfis públicos do GitHub de forma prática, rápida e estilosa. Desenvolvida com foco em performance, usabilidade e uma UI responsiva.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Funcionalidades
 
-## Expanding the ESLint configuration
+- Busca por usuários do GitHub com validação.
+- Exibição de informações detalhadas do perfil: avatar, bio, entre outros.
+- Listagem dos repositórios públicos com ordenação por estrelas ou data de atualização.
+- Página de detalhes de cada repositório com informações adicionais.
+- Paginação e controle de estado global via Context API.
+- UI moderna com componentes acessíveis e responsivos.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## ⚙️ Tecnologias & Ferramentas
 
-```js
-export default tseslint.config([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
+- **React 19** + **React Router DOM 6**
+- **Vite** para bundling e desenvolvimento rápido
+- **Tailwind CSS** para estilização com classes utilitárias
+- **React Query (TanStack)** para cache e gerenciamento de estado assíncrono
+- **React Hook Form + Zod** para formulários validados
+- **SHADCN UI** e **Lucide React** para acessibilidade e ícones elegantes
+- **Vitest + Testing Library** para testes unitários e de integração
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## 🛠 Arquitetura & Boas Práticas
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+- Estrutura modularizada por responsabilidade (páginas, componentes, contextos, hooks, utils, etc.)
+- Controle de estado com Context API desacoplado do DOM
+- Tipagem total com TypeScript
+- ESLint e Prettier para padronização de código
+- Testes automatizados cobrindo componentes principais e fluxo de dados
+
+## Como rodar localmente
+
+```bash
+# 1. Clone o repositório
+git clone https://github.com/srsouzaj/github-profile-search.git
+
+# 2. Acesse o diretório do projeto
+cd github-profile-search
+
+# 3. Instale as dependências
+npm install
+
+# 4. Inicie o ambiente de desenvolvimento
+npm run dev
+
+# 4. Para rodar os testes
+npm run test
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📝 Variáveis de Ambiente
 
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
+Para que a aplicação se comunique corretamente com a API do GitHub, é necessário configurar um arquivo `.env` na raiz do projeto com as seguintes variáveis:
 
-export default tseslint.config([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs["recommended-typescript"],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
+- `VITE_API_URL`: URL base da API do GitHub.
+- `VITE_GITHUB_TOKEN`: Token de autenticação pessoal do GitHub.
+
+> **⚠️ Atenção:** Nunca compartilhe seu token publicamente.
+
+### Como Conseguir o seu GitHub Token
+
+1. Acesse sua conta do GitHub e vá em **Settings**.
+2. No menu lateral, clique em **Developer settings**.
+3. Vá para **Personal access tokens** e clique em **Generate new token**.
+4. Escolha as permissões necessárias (leitura pública já é suficiente).
+5. Gere e copie o token. Depois, adicione ao seu `.env`.
+
+## 🧪 Teste de Responsividade
+
+Recomenda-se o uso da ferramenta [Responsively App](http://responsively.app/download) para verificar o comportamento do layout em múltiplas resoluções de tela. Essa etapa é fundamental para garantir uma experiência consistente em diferentes dispositivos.
+
+---
+
+🛠 Criado com carinho por [Jorge de Souza](https://github.com/srsouzaj) 💻
