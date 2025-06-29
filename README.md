@@ -29,6 +29,7 @@ Uma aplicação web que permite buscar e visualizar perfis públicos do GitHub d
 
 - Estrutura modularizada por responsabilidade (páginas, componentes, contextos, hooks, utils, etc.)
 - Controle de estado com Context API desacoplado do DOM
+- Utilização dos princípios de SOLID
 - Tipagem total com TypeScript
 - ESLint para padronização de código
 - Testes automatizados cobrindo componentes principais
