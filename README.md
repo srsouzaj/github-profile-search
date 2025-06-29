@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="logo" width="40" height="40" src="https://i.ibb.co/xqNV3JkK/github.png" />
+  <img alt="logo" width="80" height="80" src="https://i.ibb.co/xqNV3JkK/github.png" />
 </p>
 
 # 🔍 GitHub Profile Search
@@ -30,8 +30,8 @@ Uma aplicação web que permite buscar e visualizar perfis públicos do GitHub d
 - Estrutura modularizada por responsabilidade (páginas, componentes, contextos, hooks, utils, etc.)
 - Controle de estado com Context API desacoplado do DOM
 - Tipagem total com TypeScript
-- ESLint e Prettier para padronização de código
-- Testes automatizados cobrindo componentes principais e fluxo de dados
+- ESLint para padronização de código
+- Testes automatizados cobrindo componentes principais
 
 ## Como rodar localmente
 
