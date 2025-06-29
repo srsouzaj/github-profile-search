@@ -3,26 +3,22 @@ import { APIErrorMessage } from "../ApiError";
 import apiRoutes from "../routes/apiRoutes";
 import { api } from "../api";
 import type { IReposApiService } from "./Types";
-import type { InRepo, OutRepos } from "./Models";
+import type { InRepo, OutRepos, OutRepoStars } from "./Models";
 
 export class useRepos implements IReposApiService {
   async consultarRepositorios(repo: InRepo): Promise<OutRepos[]> {
     try {
       if (repo.sort === "stars") {
-        const { data } = await api.get<{
-          total_count: number;
-          incomplete_results: boolean;
-          items: OutRepos[];
-        }>("/search/repositories", {
+        const { data } = await api.get<OutRepoStars>(apiRoutes.repo.url(), {
           params: {
             ...repo,
             q: `user:${repo.username}`,
           },
         });
-        return data.items;
+        return data.items || ([] as OutRepos[]);
       } else {
         const { data } = await api.get<OutRepos[]>(
-          `/users/${repo.username}/repos`,
+          apiRoutes.users.repos.url(repo.username),
           {
             params: {
               ...repo,
@@ -30,7 +26,7 @@ export class useRepos implements IReposApiService {
             },
           }
         );
-        return data;
+        return data || ([] as OutRepos[]);
       }
     } catch (e) {
       if (e instanceof AxiosError) {

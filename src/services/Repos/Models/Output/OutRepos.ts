@@ -105,3 +105,9 @@ export interface OutRepos {
   watchers: number;
   default_branch: string;
 }
+
+export interface OutRepoStars {
+  total_count: number;
+  incomplete_results: boolean;
+  items: OutRepos[];
+}

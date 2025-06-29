@@ -9,6 +9,9 @@ const apiRoutes = {
       },
     },
   },
+  repo: {
+    url: () => "/search/repositories",
+  },
 };
 
 export default apiRoutes;
