@@ -30,6 +30,7 @@ const FormLogin = () => {
 
   return (
     <form
+      role="form"
       className="flex gap-5 not-lg:gap-1 not-lg:flex-col"
       onSubmit={handleSubmit(onSubmit)}
     >

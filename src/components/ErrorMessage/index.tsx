@@ -17,6 +17,7 @@ const ErrorMessage: FC<ErrorMessageProps> = ({
       role="alert"
       aria-live="polite"
       id={id}
+      data-testid="error-message"
     >
       <p
         className={`text-red-700 text-xs font-normal transition-all duration-300 ${

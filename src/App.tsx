@@ -1,16 +1,16 @@
-import { Routes, Route } from "react-router-dom";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import routes from "./Providers/routes";
 
-import Providers from "./Providers";
-import Home from "./pages/Home";
-import Repository from "./pages/Repository";
+const router = createBrowserRouter(routes, {
+  future: {
+    v7_relativeSplatPath: true,
+  },
+});
 
-export default function AppRoutes() {
-  return (
-    <Providers>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/repository/:owner/:repoName" element={<Repository />} />
-      </Routes>
-    </Providers>
-  );
-}
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);
