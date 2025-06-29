@@ -13,7 +13,7 @@ const Pagination = () => {
           Total de repositórios: {user.public_repos}
         </p>
         <p className="font-thin text-xs">
-          Total de páginas: {page}/{totalPages}
+          Total de páginas: {page}/{totalPages - 1}
         </p>
       </span>
       <div className="flex gap-2">

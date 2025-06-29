@@ -4,7 +4,7 @@ import { AtSign, Search } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useGithubUser } from "../../hooks/useConsultarUsuario";
-import { useCallback } from "react";
+import { memo, useCallback } from "react";
 import ErrorMessage from "../../../../components/ErrorMessage";
 import loginFormSchema from "./types/schema/login.schema";
 import type { LoginFormTypes } from "./types/interface/login.schema";
@@ -56,4 +56,4 @@ const FormLogin = () => {
   );
 };
 
-export default FormLogin;
+export default memo(FormLogin);

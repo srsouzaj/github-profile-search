@@ -1,16 +1,14 @@
 import type { OutRepos } from "@/services/Repos/Models";
 import { GitBranch } from "lucide-react";
 
-import { memo } from "react";
-
-const safeText = (text?: string | null) => {
-  console.log("safeText recebido:", text);
-  if (!text || (typeof text === "string" && text.trim() === ""))
-    return "Não informado";
-  return text;
-};
+import { memo, useCallback } from "react";
 
 const TitleRepository = ({ repo }: { repo: OutRepos }) => {
+  const safeText = useCallback((text?: string | null) => {
+    if (!text || text.trim() === "") return "Não informado";
+    return text;
+  }, []);
+
   return (
     <div className="flex flex-col gap-2">
       <GitBranch className="w-[30px] h-[30px] md:w-10 md:h-10" />
