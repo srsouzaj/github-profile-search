@@ -22,7 +22,13 @@ const Repository = () => {
     <main className="w-screen text-black h-screen flex py-8 items-center bg-black justify-center">
       <section
         aria-label="Container"
-        className="shadow-md shadow-gray-400 container flex flex-col justify-between bg-gray-100 rounded-2xl p-5"
+        className="
+    container
+    bg-gray-100 rounded-2xl p-5
+    shadow-md shadow-gray-400
+    flex flex-col justify-between
+    overflow-auto sm:overflow-visible
+  "
       >
         <Link className="w-full" to={"/"}>
           <Button className="cursor-pointer">

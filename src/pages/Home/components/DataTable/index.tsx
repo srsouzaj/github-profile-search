@@ -22,7 +22,7 @@ const DataTable = () => {
               <TableRow>
                 <TableCell
                   colSpan={3}
-                  className="text-center lg:py-45 not-lg:py-12 text-muted-foreground"
+                  className="text-center py-12 lg:py-[100px] text-muted-foreground"
                 >
                   <Loading /> Carregando
                 </TableCell>

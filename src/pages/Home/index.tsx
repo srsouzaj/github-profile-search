@@ -9,7 +9,7 @@ export default function Home() {
     <main className="w-screen text-black h-screen flex py-8 items-center bg-black justify-center">
       <section
         aria-label="Container"
-        className={`shadow-md shadow-gray-400 container flex flex-col gap-5 not-lg:gap-1 bg-gray-100 rounded-2xl ${
+        className={`shadow-md shadow-gray-400 container flex flex-col gap-2 bg-gray-100 rounded-2xl ${
           user.login && "justify-between"
         } p-5`}
       >
@@ -23,7 +23,7 @@ export default function Home() {
         )}
 
         {user?.login && (
-          <div className="overflow-auto lg:h-116 not-lg:h-120 ">
+          <div className="overflow-auto md:h-[720px] lg:h-[480px]">
             <DataTable />
           </div>
         )}

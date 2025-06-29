@@ -8,7 +8,7 @@ import { memo } from "react";
 const ActionRepository = ({ repo }: { repo: OutRepos }) => {
   const { handleCopy, isCopied } = useCopyToClipboard();
   return (
-    <div className="flex w-full gap-2">
+    <div className="flex flex-col sm:flex-row w-full gap-2">
       <Link
         className="w-full"
         to={repo.html_url}
