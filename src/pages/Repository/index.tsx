@@ -41,6 +41,7 @@ const Repository = () => {
               src="https://i.ibb.co/xqNV3JkK/github.png"
               alt="Logo do GitHub Explorer"
               className="block w-40 h-40"
+              loading="lazy"
             />
             <p>Não é comum, mas estamos com problemas.</p>
             <p>Tente novamente mais tarde.</p>

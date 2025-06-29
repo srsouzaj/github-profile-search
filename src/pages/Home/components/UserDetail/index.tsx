@@ -9,6 +9,7 @@ const UserDetail = () => {
     <aside className="flex  gap-5 not-lg:gap-2 items-center">
       <img
         src={user.avatar_url}
+        loading="lazy"
         className="w-30 h-30 not-lg:w-10 not-lg:h-10 rounded-full"
         alt=""
       />
