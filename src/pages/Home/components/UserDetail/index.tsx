@@ -32,11 +32,13 @@ const UserDetail = () => {
 
         <span className="flex gap-2 text-sm not-lg:text-xs">
           <p className="text-sm not-lg:text-xs">
-            <b>Seguidores:</b> {user.followers || "Não informado"}
+            <b>Seguidores:</b>{" "}
+            {user.followers.toLocaleString("pt-BR") || "Não informado"}
           </p>
           |
           <p className="text-sm not-lg:text-xs">
-            <b>Seguindo:</b> {user.following || "Não informado"}
+            <b>Seguindo:</b>{" "}
+            {user.following.toLocaleString("pt-BR") || "Não informado"}
           </p>
         </span>
         <p className="text-sm not-lg:text-xs">

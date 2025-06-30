@@ -10,10 +10,10 @@ const Pagination = () => {
     <div className="flex items-center not-lg:flex-col-reverse not-lg:gap-2 justify-between">
       <span>
         <p className="font-thin text-xs">
-          Total de repositórios: {user.public_repos}
+          Total de repositórios: {user.public_repos.toLocaleString("pt-BR")}
         </p>
         <p className="font-thin text-xs">
-          Total de páginas: {page}/{totalPages - 1}
+          Total de páginas: {page}/{totalPages}
         </p>
       </span>
       <div className="flex gap-2">

@@ -9,17 +9,21 @@ export default function Home() {
     <main className="w-screen text-black h-screen flex py-8 items-center bg-black justify-center">
       <section
         aria-label="Container"
-        className={`shadow-md shadow-gray-400 container flex flex-col gap-2 bg-gray-100 rounded-2xl ${
-          user.login && "justify-between"
-        } p-5`}
+        className={`shadow-md shadow-gray-400 container flex flex-col gap-3 bg-gray-100 rounded-2xl  p-5`}
       >
         <FormLogin />
         {user.login ? (
           <UserDetail />
         ) : (
-          <h1 className="font-light text-center pt-10">
+          <span className=" flex flex-col gap-5 font-light text-sm h-full justify-center items-center">
+            <img
+              src="https://i.ibb.co/xqNV3JkK/github.png"
+              alt="Logo do GitHub Explorer"
+              className="block w-40 h-40"
+              loading="lazy"
+            />
             Para começar, pesquise por um usuário.
-          </h1>
+          </span>
         )}
 
         {user?.login && (

@@ -13,7 +13,7 @@ const TableBody = () => {
         <TableRow>
           <TableCell
             colSpan={3}
-            className="text-center py-12 lg:py-[100px] text-muted-foreground"
+            className="text-center py-5 text-muted-foreground"
           >
             <Loading /> Carregando
           </TableCell>
@@ -35,7 +35,7 @@ const TableBody = () => {
           >
             <TableCell>{repo.name}</TableCell>
             <TableCell className="text-center">
-              {repo.stargazers_count}
+              {repo.stargazers_count.toLocaleString("pt-BR")}
             </TableCell>
             <TableCell className="text-right">
               {new Date(repo.updated_at).toLocaleDateString("pt-BR")}

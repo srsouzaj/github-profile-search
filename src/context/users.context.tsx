@@ -42,7 +42,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     setPage(1);
   }, []);
 
-  const totalPages = Math.ceil(user.public_repos / per_page);
+  const totalPages = Math.ceil(user.public_repos / per_page) - 1;
 
   const changePage = useCallback((direction: "next" | "prev") => {
     setPage((prev) => {
@@ -80,8 +80,9 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   );
 
   const hasNextPage = useMemo(() => {
-    return repos.length === per_page;
-  }, [repos.length, per_page]);
+    return page < totalPages;
+    // repos.length === per_page;
+  }, [page, totalPages]);
 
   const hasPrevPage = useMemo(() => {
     return page > 1;
