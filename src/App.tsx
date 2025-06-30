@@ -4,7 +4,7 @@ import Providers from "./Providers";
 import Home from "./pages/Home";
 import Repository from "./pages/Repository";
 
-export default function AppRoutes() {
+function App() {
   return (
     <Providers>
       <Routes>
@@ -14,3 +14,5 @@ export default function AppRoutes() {
     </Providers>
   );
 }
+
+export default App;
